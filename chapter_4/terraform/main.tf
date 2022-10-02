@@ -1,20 +1,24 @@
 provider "aws" {
-  //access_key = "YOUR_ACCESS_KEY"
- // secret_key = "YOUR_SECRET_KEY"
-}
-
-
-/*
-variable "aws_region"{
-    type = string
-    description = "Provide an aws region to apply the changes"
+  aws_region = var.aws_region
 }
 
 resource "aws_instance" "EC2DemoInstance" {
   instance_type = "t2.micro"
-  ami = "ami-0ed9277fb7eb570c9"
+  ami = var.aws_ami_id
 }
+
+variable "aws_region"{
+    type = string
+    description = "Provide an aws region to apply the changes."
+}
+
+variable "aws_ami_id"{
+    type = string
+    description = "Provide an aws AMI id to create EC2 instance."
+    default = "ami-0ed9277fb7eb570c9"
+}
+
 output "demo_instance_ip_address" {
     value = aws_instance.EC2DemoInstance.public_ip
     description = "Public ip of the EC2 isntance."
-}*/
+}
